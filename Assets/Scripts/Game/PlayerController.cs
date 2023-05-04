@@ -8,6 +8,7 @@ public struct PlayerInfo
 {
     public bool follower1;
     public bool follower2;
+    public bool shield;
     public int bulletType;
     public int hearts;
     public int score;
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private GameObject follower1;
     [SerializeField]
     private GameObject follower2;
+    [SerializeField]
+    private GameObject shield;
 
     [SerializeField]
     private Animator animator;
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         follower1.SetActive(playerInfo.follower1);
         follower2.SetActive(playerInfo.follower2);
+        shield.SetActive(playerInfo.shield);
 
         playerInfo.hearts = MaxPlayerLifes;
 
@@ -89,21 +93,48 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collider)
     {
-        if (collider.gameObject.tag == "Enemy" && playerInfo.hearts > 0)
+        if (collider.gameObject.tag != "Enemy" || playerInfo.hearts <= 0)
         {
-            playerInfo.hearts--;
+            return;
         }
+
+        if (playerInfo.shield)
+        {
+            playerInfo.shield = false;
+            shield.SetActive(playerInfo.shield);
+            return;
+        }
+
+        playerInfo.hearts--;
     }
 
-    void OnEnemyHit(Enemy enemy)
+    private void OnEnemyHit(Enemy enemy)
     {
         AddPoints(enemy.points);
     }
 
-    void AddPoints(int points)
+    private void AddPoints(int points)
     {
+        float oldScoreThusands = playerInfo.score / 1000;
+
         playerInfo.score += points;
 
         pointsText.text = $"Points: {playerInfo.score}";
+
+        Debug.Log(playerInfo.score + " " + (playerInfo.score / 1000) + " " + oldScoreThusands);
+
+        if ((playerInfo.score / 1000) > oldScoreThusands)
+        {
+            AddShield();
+        }
+    }
+
+    private void AddShield()
+    {
+        if (!playerInfo.shield)
+        {
+            playerInfo.shield = true;
+            shield.SetActive(playerInfo.shield);
+        }
     }
 }
