@@ -1,8 +1,12 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class EnemiesController : MonoBehaviour
+public class EnemiesSpawnController : MonoBehaviour
 {
+    public UnityEvent<float> freezeEnemies;
+
     [SerializeField]
     private List<GameObject> enemiesPrefabs;
 
@@ -10,6 +14,11 @@ public class EnemiesController : MonoBehaviour
     private List<GameObject> enemiesGO;
 
     private int maxEnemiesOnGame = 3;
+
+    private void Start()
+    {
+        freezeEnemies.AddListener(FreezeEnemies);
+    }
 
     void Update()
     {
@@ -38,6 +47,28 @@ public class EnemiesController : MonoBehaviour
             {
                 enemiesGO.RemoveAt(enemiesGOIndex);
             }
+        }
+    }
+
+    private void FreezeEnemies(float duration)
+    {
+        StartCoroutine(FreezeEnemiesRoutine(duration));
+    }
+
+    private IEnumerator FreezeEnemiesRoutine(float duration)
+    {
+        foreach (var enemyGO in enemiesGO)
+        {
+            var enemyComponent = enemyGO.GetComponent<Enemy>();
+            enemyComponent.Freeze();
+        }
+
+        yield return new WaitForSecondsRealtime(duration);
+
+        foreach (var enemyGO in enemiesGO)
+        {
+            var enemyComponent = enemyGO.GetComponent<Enemy>();
+            enemyComponent.Unfreeze();
         }
     }
 }

@@ -121,8 +121,6 @@ public class PlayerController : MonoBehaviour
 
         pointsText.text = $"Points: {playerInfo.score}";
 
-        Debug.Log(playerInfo.score + " " + (playerInfo.score / 1000) + " " + oldScoreThusands);
-
         if ((playerInfo.score / 1000) > oldScoreThusands)
         {
             AddShield();

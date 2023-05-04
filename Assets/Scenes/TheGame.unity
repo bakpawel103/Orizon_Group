@@ -418,6 +418,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40249428}
   m_CullTransparentMesh: 1
+--- !u!1 &124590644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124590645}
+  - component: {fileID: 124590646}
+  m_Layer: 0
+  m_Name: AbilitiesSpawnController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &124590645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124590644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1609178291}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124590646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124590644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1ca647c434ff2449514218dc4ca407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minAbilitySpawningPeriod: 5
+  maxAbilitySpawningPeriod: 10
+  abilitiesPrefabs:
+  - {fileID: 6452181480824466310, guid: b18e80f58018df946af05b339717be00, type: 3}
+  enemiesSpawnController: {fileID: 1931325150}
 --- !u!1 &155782437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,6 +1721,7 @@ Transform:
   m_Children:
   - {fileID: 276472571}
   - {fileID: 1931325149}
+  - {fileID: 124590645}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2009,7 +2059,7 @@ GameObject:
   - component: {fileID: 1931325149}
   - component: {fileID: 1931325150}
   m_Layer: 0
-  m_Name: EnemiesController
+  m_Name: EnemiesSpawnController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2042,6 +2092,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dfbd7da10321784b84dfdea9ea515b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  freezeEnemies:
+    m_PersistentCalls:
+      m_Calls: []
   enemiesPrefabs:
   - {fileID: 6248493047424316649, guid: 45e7ddcee35588a4eac553df28e636d3, type: 3}
   - {fileID: 961632694114138480, guid: 42c6128533a68c84eb7bf415265158f3, type: 3}

@@ -12,7 +12,7 @@ So, are you ready to take on the challenge and become the ultimate space warrior
 
 ![image desc](./images/Game%201.png)
 
-Player is using mouse to move a spaceship. Opponents will push from above and you have two options: run or fight.
+The player uses the mouse to move a spaceship. Opponents will push from above, and you have two options: run or fight.
   
 ---
   
@@ -20,7 +20,7 @@ Player is using mouse to move a spaceship. Opponents will push from above and yo
 
 ![image desc](./images/Game%203.png)
 
-By pressing left mouse button you can destroy enemies with powerfull weapon.
+By pressing the left mouse button, you can destroy enemies with a powerful weapon.
   
 --- 
   
@@ -34,13 +34,23 @@ But be careful! You can damage your ship by bumping into your opponents!
 
 ![image desc](./images/Game%207.png)
 
-For each earned 1000 points your ship will load shield that can save you from crashing opponents.
+For each 1000 points you earn, your ship will load a shield that can save you from crashing opponents.
+  
+---
+  
+![image desc](./images/Game%208.png)
+
+![image desc](./images/Game%209.png)
+
+The world can help you gain a lot of points. Sometimes it will spawn incoming abilities like the <i>Freeze</i> ability. When you collect this special ability, all enemies will be frozen for 5 seconds, which will help you to destroy all of them and gain more points!  
+
+Abilities are spawned randomly from 10 seconds to 40 seconds in random positions.
   
 ---
   
 ![image desc](./images/Game%205.png)
 
-When you lose all 3 lifes you can start an adventure again!
+When you lose all three lives, you can start the adventure again!
   
 ---
   
@@ -50,4 +60,4 @@ When you lose all 3 lifes you can start an adventure again!
 
 03.05.2023 - 6h
 
-04.05.2023 - 6h
+04.05.2023 - 8h

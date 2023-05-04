@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -48,6 +47,11 @@ public class GameController : MonoBehaviour
             gameOverScoreText.text = $"Score: {playerController.playerInfo.score}";
             gameOverPanel.SetActive(true);
         }
+    }
+
+    private void SpawnFreeze()
+    {
+
     }
 
     public void RestartGame()

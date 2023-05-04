@@ -1,12 +1,14 @@
-using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     public int points;
+    public bool frozen;
 
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private GameObject iceGO;
 
     private float speed;
 
@@ -20,6 +22,13 @@ public class Enemy : MonoBehaviour
         if (transform.position.y < -3.0)
         {
             Destroy(this.gameObject);
+        }
+
+        iceGO.SetActive(frozen);
+
+        if (frozen)
+        {
+            return;
         }
 
         transform.Translate(new Vector3(0.0f, speed * Time.deltaTime * -1.0f, 0.0f));
@@ -38,5 +47,15 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Destroy");
 
         Destroy(this.gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+    }
+
+    public void Freeze()
+    {
+        frozen = true;
+    }
+
+    public void Unfreeze()
+    {
+        frozen = false;
     }
 }
