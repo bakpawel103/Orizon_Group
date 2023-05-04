@@ -30,6 +30,9 @@ When you lose all 3 lifes you can start an adventure again!
 
 
 ## Project time:
+
 28.04.2023 - 0.5h
+
 03.05.2023 - 6h
+
 04.05.2023 - 4h
