@@ -1,9 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int points;
+
+    [SerializeField]
+    private Animator animator;
+
     private float speed;
 
     void Start()
@@ -25,7 +29,14 @@ public class Enemy : MonoBehaviour
     {
         if (collider.gameObject.tag == "Bullet" || collider.gameObject.tag == "Player")
         {
-            Destroy(this.gameObject);
+            DestroyEnemy();
         }
+    }
+
+    private void DestroyEnemy()
+    {
+        animator.SetTrigger("Destroy");
+
+        Destroy(this.gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
     }
 }

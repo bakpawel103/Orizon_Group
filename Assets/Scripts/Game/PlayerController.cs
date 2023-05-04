@@ -10,7 +10,7 @@ public struct PlayerInfo
     public bool follower2;
     public int bulletType;
     public int hearts;
-    public int points;
+    public int score;
 }
 
 public class PlayerController : MonoBehaviour
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private GameObject follower2;
 
     [SerializeField]
-    private Animator playerAnimator;
+    private Animator animator;
     [SerializeField]
     private Rigidbody2D rb;
 
@@ -36,9 +36,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private GameObject bulletPrefab;
-
-    private Vector3 mousePosition;
-    private Vector2 position = new Vector2(0.0f, 0.0f);
 
     void Start()
     {
@@ -59,18 +56,17 @@ public class PlayerController : MonoBehaviour
 
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -1.6f, 1.6f), Mathf.Clamp(transform.position.y, -1.0f, 9.0f), 0.0f);
 
-
         if (transform.position.x - oldPositionX < 0)
         {
-            playerAnimator?.SetInteger("turning", -1);
+            animator?.SetInteger("turning", -1);
         }
         else if (transform.position.x - oldPositionX > 0)
         {
-            playerAnimator?.SetInteger("turning", 1);
+            animator?.SetInteger("turning", 1);
         }
         else
         {
-            playerAnimator?.SetInteger("turning", 0);
+            animator?.SetInteger("turning", 0);
         }
 
         // Shooting
@@ -79,11 +75,6 @@ public class PlayerController : MonoBehaviour
             var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.GetComponent<Bullet>().enemyHit.AddListener(OnEnemyHit);
         }
-    }
-
-    private void FixedUpdate()
-    {
-        rb.MovePosition(position);
     }
 
     IEnumerator LifePointsCounterRoutine()
@@ -98,21 +89,21 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collider)
     {
-        if (collider.gameObject.tag == "Enemy")
+        if (collider.gameObject.tag == "Enemy" && playerInfo.hearts > 0)
         {
             playerInfo.hearts--;
         }
     }
 
-    void OnEnemyHit()
+    void OnEnemyHit(Enemy enemy)
     {
-        AddPoints(100);
+        AddPoints(enemy.points);
     }
 
     void AddPoints(int points)
     {
-        playerInfo.points += points;
+        playerInfo.score += points;
 
-        pointsText.text = "Points: " + playerInfo.points;
+        pointsText.text = $"Points: {playerInfo.score}";
     }
 }

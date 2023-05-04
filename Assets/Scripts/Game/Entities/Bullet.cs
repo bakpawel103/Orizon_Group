@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 {
     private float speed = 6.0f;
 
-    public UnityEvent enemyHit;
+    public UnityEvent<Enemy> enemyHit;
 
     void Update()
     {
@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
     {
         if (collider.gameObject.tag == "Enemy")
         {
-            enemyHit?.Invoke();
+            enemyHit?.Invoke(collider.gameObject.GetComponent<Enemy>());
             Destroy(this.gameObject);
         }
     }

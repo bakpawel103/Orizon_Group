@@ -139,11 +139,13 @@ MonoBehaviour:
     follower2: 0
     bulletType: 0
     hearts: 3
+    points: 0
   speed: 10
   follower1: {fileID: 1062862869814761237}
   follower2: {fileID: 5385655184779475450}
-  playerAnimator: {fileID: 2690856796592245784}
+  animator: {fileID: 2690856796592245784}
   rb: {fileID: 1664482833452751972}
+  pointsText: {fileID: 0}
   bulletPrefab: {fileID: 6859994872741334790, guid: 88ef89170505a8840ae1f24ac5b71804, type: 3}
 --- !u!212 &2136562363030186944
 SpriteRenderer:

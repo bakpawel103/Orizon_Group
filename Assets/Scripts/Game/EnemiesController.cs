@@ -11,11 +11,6 @@ public class EnemiesController : MonoBehaviour
 
     private int maxEnemiesOnGame = 3;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         CleanEnemiesGOList();
@@ -29,7 +24,8 @@ public class EnemiesController : MonoBehaviour
         if (enemiesGO.Count < maxEnemiesOnGame)
         {
             int newEnemyIndex = Random.Range(0, enemiesPrefabs.Count);
-            GameObject newEnemy = Instantiate(enemiesPrefabs[newEnemyIndex], new Vector3(Random.Range(-1.6f, 1.6f), 11.0f, 0), Quaternion.identity);
+            Vector3 randomEnemyPosition = new Vector3(Random.Range(-1.6f, 1.6f), 11.0f, 0);
+            GameObject newEnemy = Instantiate(enemiesPrefabs[newEnemyIndex], randomEnemyPosition, Quaternion.identity);
             enemiesGO.Add(newEnemy);
         }
     }

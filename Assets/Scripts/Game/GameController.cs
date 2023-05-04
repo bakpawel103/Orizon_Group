@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,6 +21,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     private GameObject gameOverPanel;
+    [SerializeField]
+    private TMP_Text gameOverScoreText;
 
     void Start()
     {
@@ -42,6 +45,7 @@ public class GameController : MonoBehaviour
         if (playerController.playerInfo.hearts <= 0)
         {
             Time.timeScale = 0.0f;
+            gameOverScoreText.text = $"Score: {playerController.playerInfo.score}";
             gameOverPanel.SetActive(true);
         }
     }
