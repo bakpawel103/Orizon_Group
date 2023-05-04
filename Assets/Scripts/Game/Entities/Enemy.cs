@@ -5,6 +5,8 @@ public class Enemy : MonoBehaviour
     public int points;
     public bool frozen;
 
+    public PlayerController playerController;
+
     [SerializeField]
     private Animator animator;
     [SerializeField]
@@ -42,7 +44,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void DestroyEnemy()
+    public void DestroyEnemy()
     {
         animator.SetTrigger("Destroy");
 

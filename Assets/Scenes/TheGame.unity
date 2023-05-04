@@ -466,6 +466,7 @@ MonoBehaviour:
   maxAbilitySpawningPeriod: 10
   abilitiesPrefabs:
   - {fileID: 6452181480824466310, guid: b18e80f58018df946af05b339717be00, type: 3}
+  - {fileID: 6452181480824466310, guid: 20761aaba43938149a6fa7e7df9d2586, type: 3}
   enemiesSpawnController: {fileID: 1931325150}
 --- !u!1 &155782437
 GameObject:
@@ -2095,11 +2096,15 @@ MonoBehaviour:
   freezeEnemies:
     m_PersistentCalls:
       m_Calls: []
+  bombEnemies:
+    m_PersistentCalls:
+      m_Calls: []
   enemiesPrefabs:
   - {fileID: 6248493047424316649, guid: 45e7ddcee35588a4eac553df28e636d3, type: 3}
   - {fileID: 961632694114138480, guid: 42c6128533a68c84eb7bf415265158f3, type: 3}
   - {fileID: 4765853725823738517, guid: 5ad7914478712fc47a026efd05d3b49d, type: 3}
   enemiesGO: []
+  playerController: {fileID: 1823677998}
 --- !u!1 &1941089525
 GameObject:
   m_ObjectHideFlags: 0

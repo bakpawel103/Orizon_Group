@@ -48,6 +48,14 @@ Abilities are spawned randomly from 10 seconds to 40 seconds in random positions
   
 ---
   
+![image desc](./images/Game%2010.png)
+
+![image desc](./images/Game%2011.png)
+
+<i>Bomb</i> ability helps you to destroy all enemies at the same time!
+
+---
+  
 ![image desc](./images/Game%205.png)
 
 When you lose all three lives, you can start the adventure again!
@@ -60,4 +68,4 @@ When you lose all three lives, you can start the adventure again!
 
 03.05.2023 - 6h
 
-04.05.2023 - 8h
+04.05.2023 - 10h

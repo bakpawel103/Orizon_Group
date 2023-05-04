@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
         playerInfo.hearts--;
     }
 
-    private void OnEnemyHit(Enemy enemy)
+    public void OnEnemyHit(Enemy enemy)
     {
         AddPoints(enemy.points);
     }

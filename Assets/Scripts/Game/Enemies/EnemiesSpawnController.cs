@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class EnemiesSpawnController : MonoBehaviour
 {
     public UnityEvent<float> freezeEnemies;
+    public UnityEvent bombEnemies;
 
     [SerializeField]
     private List<GameObject> enemiesPrefabs;
@@ -13,11 +14,15 @@ public class EnemiesSpawnController : MonoBehaviour
     [SerializeField]
     private List<GameObject> enemiesGO;
 
+    [SerializeField]
+    private PlayerController playerController;
+
     private int maxEnemiesOnGame = 3;
 
     private void Start()
     {
         freezeEnemies.AddListener(FreezeEnemies);
+        bombEnemies.AddListener(BombEnemies);
     }
 
     void Update()
@@ -35,6 +40,7 @@ public class EnemiesSpawnController : MonoBehaviour
             int newEnemyIndex = Random.Range(0, enemiesPrefabs.Count);
             Vector3 randomEnemyPosition = new Vector3(Random.Range(-1.6f, 1.6f), 11.0f, 0);
             GameObject newEnemy = Instantiate(enemiesPrefabs[newEnemyIndex], randomEnemyPosition, Quaternion.identity);
+            newEnemy.GetComponent<Enemy>().playerController = playerController;
             enemiesGO.Add(newEnemy);
         }
     }
@@ -69,6 +75,16 @@ public class EnemiesSpawnController : MonoBehaviour
         {
             var enemyComponent = enemyGO.GetComponent<Enemy>();
             enemyComponent.Unfreeze();
+        }
+    }
+
+    private void BombEnemies()
+    {
+        foreach (var enemyGO in enemiesGO)
+        {
+            var enemyComponent = enemyGO.GetComponent<Enemy>();
+            enemyComponent.playerController.OnEnemyHit(enemyComponent);
+            enemyComponent.DestroyEnemy();
         }
     }
 }
